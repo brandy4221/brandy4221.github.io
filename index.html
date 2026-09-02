@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio — Brandon Martínez</title>
+<style>
+  :root{
+    --azul:#0E217E; --cyan:#1B7A9E; --tinta:#17211f; --tenue:#5a6b85;
+    --papel:#f6f8fc; --tarjeta:#ffffff; --linea:#e3e8f0;
+    --ok:#15803d; --ok-bg:#ecfdf5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6}
+  .hoja{max-width:60rem;margin:0 auto;padding:3rem 1.4rem 5rem}
+
+  header{margin-bottom:2.5rem}
+  h1{font-size:clamp(1.9rem,5vw,2.6rem);margin:0 0 .3rem;color:var(--azul)}
+  .rol{font-size:1.05rem;color:var(--tenue);margin:0}
+  .intro{margin-top:1.1rem;max-width:44rem;color:#33405a}
+
+  h2{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--tenue);margin:2.6rem 0 1rem;font-weight:700}
+
+  .card{background:var(--tarjeta);border:1px solid var(--linea);
+    border-radius:14px;padding:1.5rem 1.6rem;margin-bottom:1.2rem;
+    box-shadow:0 1px 2px rgba(14,33,126,.04)}
+  .card h3{margin:0 0 .2rem;font-size:1.25rem;color:var(--azul)}
+  .card .sub{margin:0 0 .9rem;color:var(--tenue);font-size:.9rem}
+  .card p{margin:.5rem 0}
+  .card ul{margin:.6rem 0 0;padding-left:1.1rem}
+  .card li{margin:.25rem 0}
+
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+  .tag{font-size:.74rem;background:#eef2fb;color:var(--azul);
+    border:1px solid #dbe3f4;border-radius:999px;padding:.2rem .6rem;font-weight:600}
+
+  .shot{width:100%;border:1px solid var(--linea);border-radius:10px;
+    margin-top:1rem;display:block}
+  .shot-nota{font-size:.78rem;color:var(--tenue);margin:.4rem 0 0}
+
+  .destaca{display:inline-block;font-size:.72rem;font-weight:700;
+    background:var(--ok-bg);color:var(--ok);border:1px solid #a7f3d0;
+    border-radius:999px;padding:.15rem .55rem;margin-left:.5rem;vertical-align:middle}
+
+  .archivos{background:var(--tarjeta);border:1px solid var(--linea);
+    border-radius:14px;padding:1.2rem 1.5rem}
+  .archivos a{color:var(--cyan);text-decoration:none;font-weight:600}
+  .archivos a:hover{text-decoration:underline}
+  .archivos li{margin:.4rem 0}
+
+  footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--linea);
+    color:var(--tenue);font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="hoja">
+
+  <header>
+    <h1>Brandon Martínez</h1>
+    <p class="rol">Desarrollo de plataformas y sistemas internos · BetuRed</p>
+    <p class="intro">
+      Selección de proyectos que construí: en BetuRed, una página pública de captación,
+      dos herramientas internas que reemplazaron trabajo manual repetitivo y un monitor
+      de red — todas en producción, usadas a diario por el equipo. Y un proyecto personal:
+      una tienda en línea con Flask.
+    </p>
+  </header>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <h2>Proyectos</h2>
+
+  <!-- 1. Landing -->
+  <div class="card">
+    <h3>Sitio de captación — BetuRed</h3>
+    <p class="sub">Página pública · módulo sobre Odoo 19</p>
+    <p>
+      Sitio donde un visitante verifica si hay cobertura en su localidad, compara planes,
+      revisa promociones y solicita el servicio. Incluye un mapa de cobertura interactivo,
+      una calculadora que recomienda plan según los aparatos que conecta, un portal de
+      cliente y un panel de administración para editar contenido sin tocar código.
+    </p>
+    <ul>
+      <li>Verificación de cobertura contra polígonos KMZ y por dirección / Google Maps.</li>
+      <li>Registro de prospectos en el sistema del proveedor (IWISP) antes de derivar a WhatsApp.</li>
+      <li>Asistente guiado que resuelve dudas frecuentes y arma tutoriales de fallas.</li>
+      <li>Trabajo de seguridad y accesibilidad: cabeceras, límites de carga, y adecuación
+          al Nivel AA de accesibilidad (WCAG) que exige la normativa del IFT.</li>
+    </ul>
+    <img class="shot" src="imagenes/betulanding.png" alt="Página de BetuRed">
+    <p class="shot-nota">Captura de la página en vivo.</p>
+    <div class="tags">
+      <span class="tag">Odoo 19</span><span class="tag">Python</span>
+      <span class="tag">JavaScript</span><span class="tag">CSS</span>
+      <span class="tag">API IWISP</span><span class="tag">Google Maps</span>
+      <span class="tag">WhatsApp / Respond.io</span><span class="tag">Seguridad web</span>
+      <span class="tag">Accesibilidad WCAG</span>
+    </div>
+  </div>
+
+  <!-- 2. Anualidades -->
+  <div class="card">
+    <h3>Anualidades — recordatorio de vencimientos</h3>
+    <p class="sub">Herramienta interna · FastAPI + PostgreSQL</p>
+    <p>
+      Antes, una persona filtraba a mano la cobranza para saber a quién se le vencía la
+      anualidad, y los avisaba uno por uno. Esta herramienta sube el Excel de cobranza,
+      agrupa a los clientes por el mes en que empieza su anualidad, y envía la plantilla
+      de WhatsApp aprobada — sin avisar dos veces a la misma persona.
+    </p>
+    <ul>
+      <li>Importación de Excel (openpyxl) tolerante al formato del proveedor.</li>
+      <li>Agrupación por mes y por tipo de cliente, con envío por tandas.</li>
+      <li>Envío por plantilla vía Respond.io; marca "avisado" solo cuando el mensaje sale.</li>
+      <li>Manejo de números de EE. UU. y control para no notificar por duplicado.</li>
+    </ul>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">FastAPI</span>
+      <span class="tag">PostgreSQL</span><span class="tag">openpyxl</span>
+      <span class="tag">JWT</span><span class="tag">Respond.io</span>
+      <span class="tag">JavaScript</span>
+    </div>
+  </div>
+
+  <!-- 3. Tickets -->
+  <div class="card">
+    <h3>Tickets de soporte — reparto automático</h3>
+    <p class="sub">Herramienta interna · FastAPI + PostgreSQL</p>
+    <p>
+      Reemplaza un proceso manual de filtrado y asignación. Sube el Excel de tickets de
+      IWISP, descarta las categorías que no son soporte, deja para revisión los dudosos
+      ("Otros"), y reparte los que quedan de forma pareja entre los agentes — el corte
+      quedó reducido a: subir, revisar Otros, descargar la lista repartida.
+    </p>
+    <ul>
+      <li>Detección de tickets nuevos sobre un export incremental.</li>
+      <li>Reglas de descarte configurables y revisión manual de casos dudosos.</li>
+      <li>CRUD de agentes y reparto equilibrado de la carga.</li>
+    </ul>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">FastAPI</span>
+      <span class="tag">PostgreSQL</span><span class="tag">openpyxl</span>
+      <span class="tag">JavaScript</span>
+    </div>
+  </div>
+
+  <!-- 4. Nodos -->
+  <div class="card">
+    <h3>Monitor de nodos de red <span class="destaca">Ingeniería de red</span></h3>
+    <p class="sub">Servicio en segundo plano · Python + systemd</p>
+    <p>
+      Cuando un nodo de la red cambia de IP, el sistema de gestión no avisa y alguien se
+      entera cuando un cliente llama. Este monitor revisa cada 5 minutos si el equipo
+      (MikroTik) sigue respondiendo en la IP que le corresponde según las reglas de NAT
+      del router de borde, y lo muestra en un tablero.
+    </p>
+    <ul>
+      <li>Sondeo por el protocolo de la API de RouterOS, en Python puro (sin librerías).</li>
+      <li>Importa las reglas dst-nat exportadas del router y arma la lista de vigilancia.</li>
+      <li>Corre solo con un timer de systemd; distingue "responde", "caído" y "raro".</li>
+      <li>Diseñado para ser confiable: evita las falsas alarmas de probar por la IP pública.</li>
+    </ul>
+    <img class="shot" src="imagenes/monitor-nodos.png" alt="Tablero del monitor de nodos">
+    <p class="shot-nota">Tablero del monitor (datos de ejemplo).</p>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">RouterOS API</span>
+      <span class="tag">MikroTik</span><span class="tag">systemd</span>
+      <span class="tag">Redes / NAT</span><span class="tag">FastAPI</span>
+    </div>
+  </div>
+
+  <!-- 5. Zapatería (personal) -->
+  <div class="card">
+    <h3>Zapatería — tienda en línea <span class="destaca" style="background:#eef2fb;color:var(--azul);border-color:#dbe3f4">Proyecto personal</span></h3>
+    <p class="sub">Aplicación web · Flask + MySQL</p>
+    <p>
+      Tienda en línea de una zapatería: registro e inicio de sesión con roles,
+      catálogo de productos, carrito, historial de pedidos y panel de administración
+      para gestionar el inventario. Incluye una API y funciona como app instalable (PWA).
+    </p>
+    <ul>
+      <li>Autenticación con contraseñas cifradas (hash) y consultas parametrizadas contra inyección SQL.</li>
+      <li>Panel de administración con alta, edición y baja de productos.</li>
+      <li>API de productos, ruta de salud para monitoreo, y pruebas automatizadas con pytest.</li>
+      <li>Preparado para desplegar con Docker y Railway.</li>
+    </ul>
+    <p class="shot-nota">Repositorio: github.com/brandy4221/zapateria</p>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">Flask</span>
+      <span class="tag">MySQL</span><span class="tag">pytest</span>
+      <span class="tag">Docker</span><span class="tag">PWA</span>
+      <span class="tag">gunicorn</span>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────── -->
+  <h2>Documentos incluidos</h2>
+  <div class="archivos">
+    <ul>
+      <li><a href="reporte-seguridad-betulanding.html">Reporte de seguridad y rendimiento</a>
+        — auditoría del sitio: fallas encontradas, cómo se repararon, y verificación antes/después.</li>
+      <li><a href="imagenes/betulanding.png">Captura del sitio BetuRed</a></li>
+      <li><a href="imagenes/monitor-nodos.png">Captura del monitor de nodos</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    Portafolio preparado para CV. Los proyectos son propiedad de BetuRed / Doornet S.A. de C.V.;
+    se muestran como referencia del trabajo realizado. No se incluye código con credenciales
+    ni datos de clientes.
+  </footer>
+
+</div>
+</body>
+</html>

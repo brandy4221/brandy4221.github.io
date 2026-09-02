@@ -1,0 +1,400 @@
+<title>Revisión de betu_landing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --papel:#F6F7F6; --tarjeta:#FFFFFF; --tinta:#17211F; --tenue:#66736F;
+  --linea:#DDE3E0; --linea-fuerte:#C4CEC9;
+  --alto:#A03328; --alto-suave:#F9EAE7;
+  --medio:#A8641A; --medio-suave:#F8EEE1;
+  --bien:#1C6B42; --bien-suave:#E4F1EA;
+  --sombra:0 1px 2px rgba(23,33,31,.05), 0 8px 24px -12px rgba(23,33,31,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#121715; --tarjeta:#1A211F; --tinta:#E8EDEA; --tenue:#94A19C;
+    --linea:#2A3431; --linea-fuerte:#3B4844;
+    --alto:#E08C80; --alto-suave:#2E1A17;
+    --medio:#E0A05A; --medio-suave:#2C2216;
+    --bien:#7FCBA1; --bien-suave:#16291F;
+    --sombra:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#121715; --tarjeta:#1A211F; --tinta:#E8EDEA; --tenue:#94A19C;
+  --linea:#2A3431; --linea-fuerte:#3B4844;
+  --alto:#E08C80; --alto-suave:#2E1A17;
+  --medio:#E0A05A; --medio-suave:#2C2216;
+  --bien:#7FCBA1; --bien-suave:#16291F;
+  --sombra:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--papel); color:var(--tinta);
+  font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.hoja{max-width:48rem;margin:0 auto;padding:3.5rem 1.5rem 5rem;display:flex;flex-direction:column;gap:3rem}
+
+.portada{display:flex;flex-direction:column;gap:.8rem}
+.sello{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue)}
+h1{font-family:Bitter,Georgia,serif;font-weight:700;
+  font-size:clamp(2rem,5.5vw,2.8rem);line-height:1.1;margin:0;text-wrap:balance}
+.bajada{font-size:1.08rem;color:var(--tenue);max-width:36rem;margin:0}
+
+.marcador{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.marcador div{
+  background:var(--tarjeta);border:1px solid var(--linea);border-radius:3px;
+  padding:.6rem .9rem;display:flex;flex-direction:column;gap:.1rem;min-width:7.5rem;
+}
+.marcador b{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:1.35rem;
+  font-variant-numeric:tabular-nums;line-height:1}
+.marcador span{font-size:.78rem;color:var(--tenue)}
+.m-alto b{color:var(--alto)} .m-medio b{color:var(--medio)} .m-bien b{color:var(--bien)}
+
+h2{font-family:Bitter,Georgia,serif;font-weight:600;font-size:1.6rem;
+  line-height:1.15;margin:0;text-wrap:balance}
+.seccion{display:flex;flex-direction:column;gap:1.2rem}
+.seccion > .rotulo{font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tenue)}
+
+/* fichas de hallazgo */
+.ficha{
+  background:var(--tarjeta);border:1px solid var(--linea);
+  border-left:4px solid var(--sev);border-radius:3px;
+  padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.75rem;
+  box-shadow:var(--sombra);
+}
+.ficha{--sev:var(--tenue);--sev-suave:var(--papel)}
+.ficha.alta{--sev:var(--alto);--sev-suave:var(--alto-suave)}
+.ficha.media{--sev:var(--medio);--sev-suave:var(--medio-suave)}
+.cab{display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
+.cab h3{font-family:Bitter,Georgia,serif;font-size:1.15rem;margin:0;font-weight:600;flex:1}
+.chapa{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  background:var(--sev-suave);color:var(--sev);
+  border:1px solid color-mix(in srgb, var(--sev) 35%, transparent);
+  border-radius:3px;padding:.15rem .5rem;white-space:nowrap;
+}
+.ficha p{margin:0}
+.ficha .donde{font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.8rem;color:var(--tenue)}
+.etiqueta{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--tenue);margin:.3rem 0 -.35rem}
+
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.85em;
+  background:color-mix(in srgb, var(--tenue) 12%, transparent);
+  border-radius:3px;padding:.1rem .35rem}
+
+.marco{overflow-x:auto;border:1px solid var(--linea);border-radius:3px;background:var(--papel)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:22rem}
+th,td{text-align:left;padding:.45rem .8rem;border-bottom:1px solid var(--linea)}
+tr:last-child td{border-bottom:none}
+th{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--tenue);font-weight:600}
+td.n{font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+td.antes{color:var(--alto)}
+td.desp{color:var(--bien);font-weight:600}
+
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem}
+ul li{padding-left:1.5rem;position:relative}
+ul li::before{content:"";position:absolute;left:.35rem;top:.65rem;
+  width:5px;height:5px;border-radius:50%;background:var(--tenue)}
+ul.si li::before{content:"✓";background:none;left:0;top:0;color:var(--bien);font-size:.85rem}
+
+.nota{background:var(--tarjeta);border:1px solid var(--linea);border-radius:3px;
+  padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.nota.ojo{background:var(--alto-suave);border-color:color-mix(in srgb, var(--alto) 40%, var(--linea))}
+.nota h4{font-family:Bitter,Georgia,serif;font-size:1.05rem;margin:0;font-weight:600}
+.nota.ojo h4{color:var(--alto)}
+.nota p{margin:0;color:var(--tenue)}
+.nota.ojo p{color:var(--tinta)}
+
+.pie{color:var(--tenue);font-size:.9rem;margin:0;border-top:1px solid var(--linea);padding-top:1.5rem}
+
+@media (max-width:34rem){
+  body{font-size:16px}
+  .hoja{padding:2.5rem 1.1rem 3.5rem;gap:2.25rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="hoja">
+
+  <header class="portada">
+    <div class="sello">BetuRed · módulo betu_landing</div>
+    <h1>Revisión de seguridad y rendimiento</h1>
+    <p class="bajada">Siete fallas encontradas y reparadas, cada una medida antes y después.
+      Nada de la lógica cambió: el sitio hace exactamente lo mismo que hacía.</p>
+    <div class="marcador">
+      <div class="m-alto"><b>3</b><span>de seguridad</span></div>
+      <div class="m-medio"><b>4</b><span>de robustez</span></div>
+      <div class="m-bien"><b>13</b><span>archivos tocados</span></div>
+      <div class="m-bien"><b>0</b><span>fallas al final</span></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ HALLAZGOS ═══════════════ -->
+  <section class="seccion">
+    <div class="rotulo">Lo que se encontró</div>
+    <h2>Siete fallas</h2>
+
+    <!-- 1 -->
+    <div class="ficha alta">
+      <div class="cab">
+        <h3>Cualquiera podía volverse administrador</h3>
+        <span class="chapa">Grave</span>
+      </div>
+      <div class="donde">controllers/admin.py · /betu/admin/setup</div>
+      <p>El candado decía <em>“solo desde la red local, o con token”</em>, pero la dirección de
+        origen salía del primer valor de <code>X-Forwarded-For</code> — una cabecera que escribe
+        quien llama. Mandando <code>127.0.0.1</code> el candado se abría desde cualquier parte
+        de internet.</p>
+      <p>Solo aplica mientras no exista ningún administrador. En esa ventana, un extraño se
+        registra como admin del panel: planes, promociones, cobertura y textos del sitio.</p>
+      <div class="etiqueta">Comprobado, sin admins todavía</div>
+      <div class="marco"><table>
+        <tr><th>Intento</th><th>Antes</th><th>Después</th></tr>
+        <tr><td>desde internet, sin trucos</td><td class="n">bloqueado</td><td class="n desp">bloqueado</td></tr>
+        <tr><td>diciendo ser 127.0.0.1</td><td class="n antes">PASA</td><td class="n desp">bloqueado</td></tr>
+        <tr><td>lo mismo tras un proxy</td><td class="n antes">PASA</td><td class="n desp">bloqueado</td></tr>
+        <tr><td>el servidor real (red local)</td><td class="n">pasa</td><td class="n desp">pasa</td></tr>
+        <tr><td>con el token correcto</td><td class="n">—</td><td class="n desp">pasa</td></tr>
+        <tr><td>con un token inventado</td><td class="n">—</td><td class="n desp">bloqueado</td></tr>
+      </table></div>
+      <p><b>Cómo se arregló.</b> Aquí no bastaba con leer la cabecera al revés: es una decisión de
+        permiso y basta con que un valor sea falsificable para que no sirva. Ahora, si viene
+        <code>X-Forwarded-For</code> hay un proxy delante, la pista de “red local” no significa
+        nada y <b>se exige el token</b>. Sin cabecera se mira la dirección real de la conexión,
+        que no se puede falsificar.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="ficha alta">
+      <div class="cab">
+        <h3>El límite de intentos no frenaba nada</h3>
+        <span class="chapa">Grave</span>
+      </div>
+      <div class="donde">controllers/main.py · <code>_client_key()</code></div>
+      <p>El mismo error de la cabecera, esta vez donde se agrupan los intentos por IP.
+        Cambiándola en cada petición, cada intento caía en un cubo distinto.</p>
+      <p>Eso dejaba sin efecto los frenos del <b>portal de clientes</b> —12 intentos de login por
+        15 minutos, 8 de activación— y los de las consultas de cobertura.</p>
+      <div class="etiqueta">40 intentos, límite de 12</div>
+      <div class="marco"><table>
+        <tr><th>Escenario</th><th>Antes</th><th>Después</th></tr>
+        <tr><td>misma IP, sin cabecera</td><td class="n">28 / 40</td><td class="n desp">28 / 40</td></tr>
+        <tr><td>proxy real, el caso de producción</td><td class="n antes">0 / 40</td><td class="n desp">28 / 40</td></tr>
+        <tr><td>cliente legítimo, 5 intentos</td><td class="n">—</td><td class="n desp">0 / 5</td></tr>
+        <tr><td>dos clientes tras el mismo proxy</td><td class="n">—</td><td class="n desp">no se pisan</td></tr>
+      </table></div>
+      <p><b>Cómo se arregló.</b> La cabecera se lee <b>de derecha a izquierda</b> y se toma la
+        primera que no sea de red interna: esa la puso un proxy de confianza, no el atacante.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="ficha media">
+      <div class="cab">
+        <h3>Un KMZ podía tumbar el servidor</h3>
+        <span class="chapa">Robustez</span>
+      </div>
+      <div class="donde">controllers/kmz_utils.py · <code>_extract_kml()</code></div>
+      <p>Un KMZ es un ZIP y se leía entero en memoria sin mirar cuánto pesaba por dentro. Un
+        archivo de <b>199 KB que declara 200 MB</b> —relación de 1027 a 1— se descomprimía
+        completo.</p>
+      <div class="marco"><table>
+        <tr><th>Archivo</th><th>Antes</th><th>Después</th></tr>
+        <tr><td>normal, 279 bytes</td><td class="n">1 polígono</td><td class="n desp">1 polígono</td></tr>
+        <tr><td>bomba, 199 KB → 200 MB</td><td class="n antes">1.4 s leído</td><td class="n desp">rechazado, 1 ms</td></tr>
+        <tr><td>legítimo de 5 MB</td><td class="n">1 polígono</td><td class="n desp">1 polígono</td></tr>
+      </table></div>
+      <p><b>Cómo se arregló.</b> Se mira el tamaño descomprimido <em>antes</em> de leerlo, con
+        tope de 20 MB. Un KML de cobertura real pesa unos pocos KB, así que sobra margen. Si se
+        pasa, se avisa en el log y se devuelve una colección vacía — lo mismo que ya hacía con
+        un KML ilegible.</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="ficha media">
+      <div class="cab">
+        <h3>El limitador se volvía cuadrático</h3>
+        <span class="chapa">Rendimiento</span>
+      </div>
+      <div class="donde">controllers/main.py · <code>_rate_limited()</code></div>
+      <p>Al pasar de 5,000 cubos, <b>cada visitante nuevo disparaba un barrido completo</b> de la
+        tabla. Y como la purga solo borra lo ya vencido —cosa que dentro de la ventana casi nunca
+        pasa— la tabla no bajaba y el siguiente volvía a barrer todo.</p>
+      <div class="etiqueta">Coste por llamada</div>
+      <div class="marco"><table>
+        <tr><th>IPs distintas</th><th>Antes</th><th>Después</th></tr>
+        <tr><td class="n">5,000</td><td class="n">3 µs</td><td class="n desp">2 µs</td></tr>
+        <tr><td class="n">6,000</td><td class="n antes">789 µs</td><td class="n desp">2 µs</td></tr>
+        <tr><td class="n">12,000</td><td class="n antes">2,516 µs</td><td class="n desp">2 µs</td></tr>
+        <tr><td class="n">20,000</td><td class="n antes">+30 s</td><td class="n desp">2 µs</td></tr>
+        <tr><td>cubos en memoria</td><td class="n antes">50,000</td><td class="n desp">5,000</td></tr>
+      </table></div>
+      <p><b>Cómo se arregló.</b> El desalojo es por uso reciente y en O(1): al registrar un golpe
+        la clave se reinserta al final —el diccionario conserva el orden— y si se pasa del tope se
+        sueltan las del principio, las más olvidadas. A quien está abusando no se le desaloja
+        nunca, porque acaba de golpear.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="ficha media">
+      <div class="cab">
+        <h3>Cuanto más golpeaban, más caro nos salía</h3>
+        <span class="chapa">Rendimiento</span>
+      </div>
+      <div class="donde">controllers/main.py · <code>_rate_limited()</code></div>
+      <p>Guardaba una marca de tiempo por cada golpe, para siempre, y en cada petición las volvía
+        a filtrar todas. Un amplificador al revés: el que abusa paga lo mismo por petición y
+        <b>el servidor paga cada vez más</b>.</p>
+      <div class="etiqueta">Una sola IP insistiendo, límite de 12</div>
+      <div class="marco"><table>
+        <tr><th>Golpes</th><th>Antes</th><th>Después</th></tr>
+        <tr><td class="n">1,000</td><td class="n">33 µs</td><td class="n desp">6 µs</td></tr>
+        <tr><td class="n">10,000</td><td class="n antes">285 µs</td><td class="n desp">1 µs</td></tr>
+        <tr><td class="n">20,000</td><td class="n antes">627 µs</td><td class="n desp">1 µs</td></tr>
+        <tr><td>marcas guardadas</td><td class="n antes">20,000</td><td class="n desp">13</td></tr>
+      </table></div>
+      <p><b>Cómo se arregló.</b> Pasado el límite se deja de apuntar: la respuesta ya no cambia.
+        Las marcas que ya había se conservan, que son las que hacen correr la ventana.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="ficha alta">
+      <div class="cab">
+        <h3>El panel se podía meter en un iframe</h3>
+        <span class="chapa">Confirmada por ZAP</span>
+      </div>
+      <div class="donde">17 respuestas de controllers/admin*.py</div>
+      <p>La landing pública sí mandaba cabeceras de seguridad, pero el panel se dibuja con
+        <code>request.render()</code> y no pasaba por donde estaban puestas: <b>salía sin
+        ninguna</b>. Eso permite enmarcarlo en otra página y provocar clics a ciegas sobre
+        alguien con la sesión abierta — y ahí hay <b>seis rutas que borran</b> planes,
+        promociones, cobertura y preguntas frecuentes.</p>
+      <div class="etiqueta">Lo que ahora manda cada página del panel</div>
+      <div class="marco"><table>
+        <tr><th>Cabecera</th><th>Valor</th></tr>
+        <tr><td>X-Frame-Options</td><td class="n desp">DENY</td></tr>
+        <tr><td>Content-Security-Policy</td><td class="n desp">frame-ancestors 'none'</td></tr>
+        <tr><td>X-Content-Type-Options</td><td class="n desp">nosniff</td></tr>
+        <tr><td>Referrer-Policy</td><td class="n desp">same-origin</td></tr>
+        <tr><td>Cache-Control</td><td class="n desp">no-store</td></tr>
+      </table></div>
+      <p><b>Cómo se arregló.</b> Un envoltorio en <code>admin_utils.py</code>. Las 17 llamadas
+        tenían exactamente la misma forma, así que el cambio fue mecánico y se contó: 16 en los
+        diez controladores más 1 dentro del <code>_render</code> de <code>admin.py</code>.
+        Comprobado que dibuja exactamente lo que le dan, que aguanta que no le pasen valores y
+        que no se rompe si la respuesta no admitiera cabeceras.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="ficha media">
+      <div class="cab">
+        <h3>Dos directivas de CSP sin declarar</h3>
+        <span class="chapa">Confirmada por ZAP</span>
+      </div>
+      <div class="donde">controllers/main.py · <code>_PAGE_CSP</code></div>
+      <p>Faltaban <code>form-action</code> y <code>base-uri</code>, que <b>no heredan</b> de
+        <code>default-src</code> y por eso quedaban sin regla. Sin la primera, un formulario
+        inyectado puede mandar los datos a otro servidor; sin la segunda, una etiqueta
+        <code>&lt;base&gt;</code> inyectada reescribe todas las rutas relativas de la página y
+        desvía scripts e imágenes a otro dominio.</p>
+      <p><b>Cómo se arregló.</b> Se comprobó primero que la landing <b>no tiene ni un solo
+        <code>&lt;form&gt;</code> ni ninguna <code>&lt;base&gt;</code></b> —los envíos los hace
+        el JavaScript contra el propio sitio— así que ponerlas en <code>'self'</code> no le
+        quita nada y cierra las dos vías.</p>
+    </div>
+
+    <div class="nota">
+      <h4>Lo que ZAP marcó y decidí no tocar</h4>
+      <p><b>Los comodines <code>img-src *</code> y <code>connect-src *</code>.</b> Google Maps
+        carga sus mosaicos de subdominios que cambian, y acotarlo sin poder abrir la página para
+        probarlo se lleva el mapa de cobertura por delante. Además, mientras
+        <code>script-src</code> siga con <code>unsafe-inline</code> esa restricción aporta poco:
+        quien pueda inyectar HTML ya puede ejecutar JavaScript.</p>
+      <p><b>Los <code>unsafe-inline</code> y <code>unsafe-eval</code>.</b> Reales, pero quitarlos
+        obliga a reescribir <code>betu.js</code> y <code>betu.css</code> enteros. Es un proyecto,
+        no un arreglo.</p>
+      <p><b>Cookies sin HttpOnly, Secure o SameSite, y el CSRF del formulario.</b> No son
+        nuestras: son de Odoo. La cookie del portal de clientes sí lleva las tres.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ QUE NO SE ROMPIO ═══════════════ -->
+  <section class="seccion">
+    <div class="rotulo">La verificación que importa</div>
+    <h2>Que todo siga funcionando igual</h2>
+
+    <div class="nota">
+      <h4>Regresión</h4>
+      <ul class="si">
+        <li>Sin <code>X-Forwarded-For</code> devuelve la misma dirección que antes — idéntico</li>
+        <li>Con un proxy de un salto devuelve la IP del cliente</li>
+        <li>El límite frena igual: 28 de 40, el mismo número que antes del cambio</li>
+        <li><code>_clean_phone</code> y los demás ayudantes, intactos</li>
+        <li>Bloquea al golpe 6 de 5, aguanta 5,000 insistencias sin crecer, y
+          <b>el bloqueo se levanta solo</b> al pasar la ventana</li>
+      </ul>
+    </div>
+
+    <div class="nota">
+      <h4>Humo</h4>
+      <ul class="si">
+        <li>Los 40 archivos <code>.py</code> compilan, 0 errores</li>
+        <li>Las plantillas <code>.xml</code> son válidas</li>
+        <li>Todo lo que declara el manifiesto existe en disco</li>
+        <li>Los estáticos siguen ahí: <code>index.html</code> 90 KB, <code>betu.css</code> 187 KB,
+          <code>betu.js</code> 135 KB</li>
+      </ul>
+    </div>
+
+    <div class="nota">
+      <h4>Lo que se revisó y estaba bien</h4>
+      <ul>
+        <li>Todas las rutas de escritura del admin verifican sesión — ningún borrado expuesto</li>
+        <li><code>/api/cliente</code> toma el id de la sesión, no del query: nadie puede consultar
+          el servicio de otro cambiando un parámetro</li>
+        <li>Contraseñas con pbkdf2, bloqueo por fuerza bruta, mensajes genéricos</li>
+        <li>Cookies <code>httponly</code>, <code>SameSite</code>, <code>Secure</code> en https,
+          tokens de 32 bytes</li>
+        <li>Sin SQL armado a mano en todo el módulo — no hay inyección</li>
+        <li>El API público expone una lista explícita de campos, no el registro entero</li>
+        <li>Las rutas de imágenes buscan en la base, no en disco — sin path traversal</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PENDIENTE ═══════════════ -->
+  <section class="seccion">
+    <div class="rotulo">Lo que queda</div>
+    <h2>Dos cosas que no puedo arreglar yo</h2>
+
+    <div class="nota ojo">
+      <h4>La llave de IWISP está escrita en el código</h4>
+      <p><code>controllers/main.py</code>, línea 29. Es la misma que ya estaba en
+        <code>web_site_betured</code>: ahora vive en dos repositorios y en el historial de git de
+        los dos. Borrarla del archivo no sirve — <b>rotarla es el único arreglo</b>.</p>
+    </div>
+
+    <div class="nota">
+      <h4>El panel de administración se puede meter en un iframe</h4>
+      <p>Son 17 respuestas del admin y ninguna manda <code>X-Frame-Options</code>, así que se
+        puede enmarcar la página y engañar a alguien logueado para que haga clic donde no.
+        Es modesto —hace falta que el admin visite una página maliciosa con la sesión abierta—
+        pero el arreglo toca 17 lugares y preferí no meterle mano sin avisar.</p>
+    </div>
+  </section>
+
+  <p class="pie">Cinco commits en la rama <code>sistemas_dev</code>, sin subir todavía:
+    un push levanta un build de Odoo.sh. Se tocaron 13 archivos de <code>controllers/</code>; nada de <code>models/</code>, <code>views/</code>,
+    <code>static/</code> ni <code>security/</code>.</p>
+
+</div>
