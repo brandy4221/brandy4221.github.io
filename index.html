@@ -39,6 +39,11 @@
   .shot{width:100%;border:1px solid var(--linea);border-radius:10px;
     margin-top:1rem;display:block}
   .shot-nota{font-size:.78rem;color:var(--tenue);margin:.4rem 0 0}
+  .galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.7rem}
+  .galeria figure{margin:0}
+  .galeria img{width:100%;border:1px solid var(--linea);border-radius:8px;display:block}
+  .galeria figcaption{font-size:.72rem;color:var(--tenue);margin-top:.3rem;text-align:center}
+  @media(max-width:640px){.galeria{grid-template-columns:1fr}}
 
   .destaca{display:inline-block;font-size:.72rem;font-weight:700;
     background:var(--ok-bg);color:var(--ok);border:1px solid #a7f3d0;
@@ -88,8 +93,13 @@
       <li>Trabajo de seguridad y accesibilidad: cabeceras, límites de carga, y adecuación
           al Nivel AA de accesibilidad (WCAG) que exige la normativa del IFT.</li>
     </ul>
-    <img class="shot" src="imagenes/betulanding.png" alt="Página de BetuRed">
-    <p class="shot-nota">Captura de la página en vivo.</p>
+    <img class="shot" src="imagenes/betu.png" alt="Página de BetuRed — inicio">
+    <div class="galeria">
+      <figure><img src="imagenes/pagina/betu2.png" alt="Promociones"><figcaption>Promociones</figcaption></figure>
+      <figure><img src="imagenes/pagina/betu3.png" alt="Planes"><figcaption>Planes</figcaption></figure>
+      <figure><img src="imagenes/pagina/betu4.png" alt="Cobertura"><figcaption>Verificación de cobertura</figcaption></figure>
+    </div>
+    <p class="shot-nota">Capturas de la página en vivo.</p>
     <div class="tags">
       <span class="tag">Odoo 19</span><span class="tag">Python</span>
       <span class="tag">JavaScript</span><span class="tag">CSS</span>
