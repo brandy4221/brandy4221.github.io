@@ -45,6 +45,13 @@
   .galeria figcaption{font-size:.72rem;color:var(--tenue);margin-top:.3rem;text-align:center}
   @media(max-width:640px){.galeria{grid-template-columns:1fr}}
 
+  .codigo{display:inline-flex;align-items:center;gap:.35rem;margin-top:.9rem;
+    font-size:.85rem;font-weight:600;color:#fff;background:var(--azul);
+    text-decoration:none;padding:.45rem .9rem;border-radius:8px}
+  .codigo:hover{background:#1a2a5c}
+  .codigo-priv{display:inline-block;margin-top:.9rem;font-size:.8rem;
+    color:var(--tenue);background:#f1f4f9;border:1px solid var(--linea);
+    border-radius:8px;padding:.4rem .8rem}
   .destaca{display:inline-block;font-size:.72rem;font-weight:700;
     background:var(--ok-bg);color:var(--ok);border:1px solid #a7f3d0;
     border-radius:999px;padding:.15rem .55rem;margin-left:.5rem;vertical-align:middle}
@@ -100,6 +107,8 @@
       <figure><img src="imagenes/pagina/betu4.png" alt="Cobertura"><figcaption>Verificación de cobertura</figcaption></figure>
     </div>
     <p class="shot-nota">Capturas de la página en vivo.</p>
+    
+    <span class="codigo-priv">&#128274; Código privado (propiedad de BetuRed)</span>
     <div class="tags">
       <span class="tag">Odoo 19</span><span class="tag">Python</span>
       <span class="tag">JavaScript</span><span class="tag">CSS</span>
@@ -127,6 +136,8 @@
     </ul>
     <img class="shot" src="imagenes/anualidades.png" alt="Herramienta de Anualidades">
     <p class="shot-nota">Captura de la herramienta.</p>
+    
+    <span class="codigo-priv">&#128274; Código privado (propiedad de BetuRed)</span>
     <div class="tags">
       <span class="tag">Python</span><span class="tag">FastAPI</span>
       <span class="tag">PostgreSQL</span><span class="tag">openpyxl</span>
@@ -152,6 +163,8 @@
     </ul>
     <img class="shot" src="imagenes/tickets.png" alt="Herramienta de Tickets de soporte">
     <p class="shot-nota">Captura de la herramienta.</p>
+    
+    <span class="codigo-priv">&#128274; Código privado (propiedad de BetuRed)</span>
     <div class="tags">
       <span class="tag">Python</span><span class="tag">FastAPI</span>
       <span class="tag">PostgreSQL</span><span class="tag">openpyxl</span>
@@ -177,6 +190,8 @@
     </ul>
     <img class="shot" src="imagenes/monitor-nodos.png" alt="Tablero del monitor de nodos">
     <p class="shot-nota">Tablero del monitor (datos de ejemplo).</p>
+    
+    <span class="codigo-priv">&#128274; Código privado (propiedad de BetuRed)</span>
     <div class="tags">
       <span class="tag">Python</span><span class="tag">RouterOS API</span>
       <span class="tag">MikroTik</span><span class="tag">systemd</span>
@@ -199,7 +214,7 @@
       <li>API de productos, ruta de salud para monitoreo, y pruebas automatizadas con pytest.</li>
       <li>Preparado para desplegar con Docker y Railway.</li>
     </ul>
-    <p class="shot-nota">Repositorio: github.com/brandy4221/zapateria</p>
+    <a class="codigo" href="https://github.com/brandy4221/zapateria" target="_blank">&lt;/&gt; Ver código en GitHub</a>
     <div class="tags">
       <span class="tag">Python</span><span class="tag">Flask</span>
       <span class="tag">MySQL</span><span class="tag">pytest</span>
